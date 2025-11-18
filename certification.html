@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Certification - Secure Funder</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="header">
+    <a href="/dashboard" class="logo">Aquamark</a>
+    <div class="nav-links">
+      <a href="/dashboard">Dashboard</a>
+      <span id="userEmail"></span>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="container-narrow">
+    <div id="loadingMessage" class="card text-center">
+      <div class="loading" style="margin: 2rem auto;"></div>
+      <p>Loading your certification...</p>
+    </div>
+
+    <div id="certificationContent" class="hidden">
+      <div class="alert alert-success mb-3 text-center">
+        <h2 style="margin: 0; font-size: 1.5rem;">🎉 Congratulations!</h2>
+        <p style="margin: 0.5rem 0 0 0;">You are now a Certified Secure Funder</p>
+      </div>
+
+      <div class="card text-center">
+        <img src="https://www.aquamark.io/assets/secure-funder-badge-2026.png" 
+             alt="Secure Funder 2026 Badge" 
+             style="max-width: 200px; margin: 0 auto 1rem;"
+             onerror="this.style.display='none'">
+        
+        <h1 id="companyName" style="color: var(--primary-blue); margin-bottom: 0.5rem;"></h1>
+        <p class="text-medium">Certified Secure Funder - 2026</p>
+        <p class="form-hint">Certificate #<span id="certificateNumber"></span></p>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Your Certification Materials</h2>
+        
+        <div class="form-group">
+          <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Digital Badge</h3>
+          <p class="text-medium mb-2">Use this badge on your website, marketing materials, and email signatures.</p>
+          <button class="btn btn-primary" onclick="downloadBadge()">Download Badge (PNG)</button>
+        </div>
+
+        <div class="form-group">
+          <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Certificate</h3>
+          <p class="text-medium mb-2">Official certification certificate for your records.</p>
+          <button class="btn btn-primary" onclick="generateCertificate()">Download Certificate (PDF)</button>
+        </div>
+
+        <div class="form-group">
+          <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">API Integration</h3>
+          <p class="text-medium mb-2">Access documentation for Aquamark's watermarking API.</p>
+          <a href="https://www.aquamark.io/funder-api" target="_blank" class="btn btn-secondary">View API Documentation</a>
+          <p class="form-hint mt-1">Remember: API integration must be completed within 60 days</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Next Steps</h2>
+        <ul style="margin-left: 1.5rem; color: var(--text-medium); line-height: 1.8;">
+          <li><strong>Add the badge to your website</strong> - Show prospects you're a certified Secure Funder</li>
+          <li><strong>Update your marketing materials</strong> - Include the badge in presentations and proposals</li>
+          <li><strong>Integrate the watermarking API</strong> - Protect merchant data in all submissions (60-day requirement)</li>
+          <li><strong>Announce your certification</strong> - Share on LinkedIn and social media</li>
+          <li><strong>Get listed in the directory</strong> - You'll automatically appear on aquamark.io/directory</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="mb-2">Certification Details</h3>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem 0; color: var(--text-medium);">Company:</td>
+            <td style="padding: 0.75rem 0; text-align: right;" id="companyNameDetail"></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem 0; color: var(--text-medium);">Certificate Number:</td>
+            <td style="padding: 0.75rem 0; text-align: right;" id="certificateNumberDetail"></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem 0; color: var(--text-medium);">Certified Date:</td>
+            <td style="padding: 0.75rem 0; text-align: right;" id="certifiedDate"></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem 0; color: var(--text-medium);">Valid Through:</td>
+            <td style="padding: 0.75rem 0; text-align: right;">December 31, 2026</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="text-center text-medium">
+        <p>Questions? Contact us at <a href="mailto:support@aquamark.io">support@aquamark.io</a></p>
+      </div>
+    </div>
+
+    <div id="notCertifiedMessage" class="card hidden">
+      <div class="alert alert-error">
+        You must complete payment before accessing your certification.
+      </div>
+      <p class="text-center">
+        <a href="/dashboard" class="btn btn-primary">Return to Dashboard</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="/auth.js"></script>
+  <script src="/certification.js"></script>
+</body>
+</html>

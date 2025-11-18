@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment - Secure Funder Certification</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="header">
+    <a href="/dashboard" class="logo">Aquamark</a>
+    <div class="nav-links">
+      <a href="/dashboard">Dashboard</a>
+      <span id="userEmail"></span>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="container-narrow">
+    <h1 class="mb-3 text-center">Complete Your Certification</h1>
+
+    <div id="loadingMessage" class="card text-center">
+      <div class="loading" style="margin: 2rem auto;"></div>
+      <p>Loading payment information...</p>
+    </div>
+
+    <div id="paymentContent" class="hidden">
+      <div class="alert alert-success mb-3">
+        <strong>Congratulations!</strong> Your application has been approved.
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Certification Fee</h2>
+        
+        <div style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <span class="text-medium">Secure Funder Certification 2026</span>
+            <strong>$3,499.00</strong>
+          </div>
+          <p class="form-hint">One-time annual certification fee</p>
+        </div>
+
+        <div class="mb-3">
+          <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">What's Included:</h3>
+          <ul style="margin-left: 1.5rem; color: var(--text-medium);">
+            <li>Digital badge for use in marketing materials</li>
+            <li>Official certification certificate</li>
+            <li>Listing in Secure Funder directory</li>
+            <li>Access to Aquamark watermarking API</li>
+            <li>Annual badge renewal and announcements</li>
+            <li>Secure Funder™ trademark usage rights</li>
+          </ul>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 600;">
+            <span>Total Due:</span>
+            <span style="color: var(--primary-blue);">$3,499.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="mb-2">Payment Information</h3>
+        <p class="text-medium mb-3">You will be redirected to Stripe's secure payment page to complete your purchase.</p>
+        
+        <div class="alert alert-info mb-3">
+          <strong>Secure Payment:</strong> All payments are processed securely through Stripe. Your payment information is never stored on our servers.
+        </div>
+
+        <button id="checkoutBtn" class="btn btn-primary btn-block" onclick="createCheckout()">
+          <span id="checkoutText">Proceed to Payment</span>
+          <span id="checkoutSpinner" class="loading hidden"></span>
+        </button>
+      </div>
+
+      <div class="text-center text-medium">
+        <p>Questions? Contact us at <a href="mailto:support@aquamark.io">support@aquamark.io</a></p>
+      </div>
+    </div>
+
+    <div id="notApprovedMessage" class="card hidden">
+      <div class="alert alert-error">
+        Your application must be approved before you can proceed to payment.
+      </div>
+      <p class="text-center">
+        <a href="/dashboard" class="btn btn-primary">Return to Dashboard</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="/auth.js"></script>
+  <script src="/payment.js"></script>
+</body>
+</html>
